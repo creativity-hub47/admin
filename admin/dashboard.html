@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Hospital Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- css -->
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <!-- Nav & Side -->
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="menu-btn">&#9776;</div>
+        <div class="logo">
+            <img src="https://via.placeholder.com/80" alt="Logo">
+        </div>
+        <div class="profile">
+            <img src="https://via.placeholder.com/40" alt="Profile">
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="patients.html">Patients</a>
+        <a href="doctor.html">Doctors & Staff</a>
+        <a href="appoint.html">Appointments</a>
+        <a href="medical.html">Medical Records</a>
+        <a href="emergency.html">Emergency Cases</a>
+        <a href="reports.html">Reports & Analytics</a>
+        <a href="settings.html">Settings</a>
+    </div>
+    <!-- End Nav & Side -->
+
+
+    <!-- Main Content -->
+    <div class="content">
+
+        <div class="container">
+            <h2 class="dashboard-title">🏥 Hospital Dashboard</h2>
+
+            <!-- Dashboard Cards -->
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card text-white bg-primary">
+                        <div class="card-body">
+                            <div class="icon">🛏️</div>
+                            <h5 class="card-title">Available Beds</h5>
+                            <p class="card-text" id="beds-count">120</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card text-white bg-success">
+                        <div class="card-body">
+                            <div class="icon">👩‍⚕️</div>
+                            <h5 class="card-title">Doctors on Duty</h5>
+                            <p class="card-text" id="doctors-count">45</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card text-white bg-danger">
+                        <div class="card-body">
+                            <div class="icon">🚑</div>
+                            <h5 class="card-title">Emergency Cases</h5>
+                            <p class="card-text" id="emergency-count">8</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alerts Section -->
+            <div class="alert-box">
+                <h4>🔔 Alerts & Notifications</h4>
+                <div id="alerts-container">
+                    <div class="alert alert-warning d-flex justify-content-between">
+                        <span>⚠️ ICU is at 90% capacity!</span>
+                        <span class="close-btn">&times;</span>
+                    </div>
+                </div>
+                <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#alertModal">+ Add Alert</button>
+            </div>
+        </div>
+
+        <!-- Add Alert Modal -->
+        <div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="alertModalLabel">Add New Alert</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" id="alert-text" class="form-control" placeholder="Enter alert message">
+                        <select id="alert-type" class="form-control mt-2">
+                            <option value="info">Info</option>
+                            <option value="warning">Warning</option>
+                            <option value="danger">Critical</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="add-alert-btn">Add Alert</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    </div>
+
+    
+    <!-- js -->
+    <script>
+        $(document).ready(function(){
+            $(".menu-btn").click(function(){
+                $(".sidebar").toggleClass("open");
+                $(".content").toggleClass("shift");
+            });
+        });
+    </script>
+
+    <script src="js/dashboard.js"></script>
+
+</body>
+</html>
+
